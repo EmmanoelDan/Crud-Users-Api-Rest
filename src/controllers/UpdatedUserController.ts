@@ -5,22 +5,29 @@ import {prismaClient} from "../database/prismaClient";
 export class UpdatedUserController {
     async handle(request: Request, response: Response){
 
-        const {id} = request.params;
-        const { name, cpf, email, phone, sex, dataBirth } = request.body;
-
-        const user = await prismaClient.user.update({
-            where: {
-                id: id
-            },
-            data: {
-                name: name,
-                email: email,
-                phone: phone,
-                sex: sex,
-                dataBirth: dataBirth
-            }
-        })
-            
-        return response.json(user);
+        try {
+            const {id} = request.params;
+            const { name, email, phone, sex, dataBirth } = request.body;
+    
+            const user = await prismaClient.user.update({
+                where: {
+                    id: id
+                },
+                data: {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    sex: sex,
+                    dataBirth: dataBirth
+                }
+            })
+                
+            return response.status(201).json({
+                Sucesso: "Updated User",
+                Data: user
+            });
+        } catch (e) {
+            return response.json({"Error": "id is invalid!"})
+        }
     }
 }

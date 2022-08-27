@@ -8,16 +8,20 @@ export class CreateUserController {
         try {
             const { name, cpf, email, phone, sex, dataBirth } = request.body;
 
-            const user = await prismaClient.user.create({data: {name, cpf, email, phone, sex, dataBirth}})
-
-            
+            const user = await prismaClient.user.create(
+                {
+                    data: {
+                        name, cpf, email, phone, sex, dataBirth
+                    }
+                })
                 
-            return response.json(user);
+            return response.json({
+                Sucesso: "Created User",
+                Data: user
+            });
             
         } catch (e) {
-            response.json({"err": "invalid value"})
+            response.json({"error": "invalid cpf"})
         }
-
-        
     }
 }
