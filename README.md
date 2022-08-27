@@ -32,7 +32,7 @@ Simple api - Create, Read, Updated e Delete (CRUD)
     }
 - DELETE /users/:id
 
-obs: cpf is attibute unique
+obs: cpf is attribute unique
 
 ## configuration
 
