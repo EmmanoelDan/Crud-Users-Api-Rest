@@ -4,31 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EmmanoelDan/Crud-Users-Api-Rest.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/EmmanoelDan/Crud-Users-Api-Rest/issues"
-  },
-  "homepage": "https://github.com/EmmanoelDan/Crud-Users-Api-Rest#readme",
   "devDependencies": {
     "@types/node": "^18.7.13",
-    "sequelize-cli": "^6.4.1",
+    "prisma": "^4.2.1",
     "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^4.8.2"
   },
   "dependencies": {
-    "dotenv": "^16.0.1",
+    "@prisma/client": "^4.2.1",
+    "@types/express": "^4.17.13",
+    "@types/uuid": "^8.3.4",
+    "body-parser": "^1.20.0",
     "express": "^4.18.1",
-    "pg": "^8.8.0",
-    "pg-hstore": "^2.3.4",
-    "sequelize": "^6.21.4"
+    "ts-node-dev": "^2.0.0",
+    "uuid": "^8.3.2"
   }
 }
