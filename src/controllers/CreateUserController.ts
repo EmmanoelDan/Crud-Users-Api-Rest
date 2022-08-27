@@ -1,6 +1,14 @@
 import { Request, Response } from "express";
-import {v4 as uuidv4} from 'uuid'
 import {prismaClient} from "../database/prismaClient";
+
+interface IUser {
+    name: string;
+    cpf: string; 
+    email: string; 
+    phone: string; 
+    sex: string; 
+    dataBirth: string
+}
 
 export class CreateUserController {
     async handle(request: Request, response: Response){
@@ -8,10 +16,10 @@ export class CreateUserController {
         try {
             const { name, cpf, email, phone, sex, dataBirth } = request.body;
 
-            const user = await prismaClient.user.create(
+            const user: IUser = await prismaClient.user.create(
                 {
                     data: {
-                        name, cpf, email, phone, sex, dataBirth
+                        name: name, cpf: cpf, email: email, phone: phone, sex: sex, dataBirth: dataBirth
                     }
                 })
                 

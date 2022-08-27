@@ -1,6 +1,14 @@
 import { Request, Response } from "express";
-import {v4 as uuidv4} from 'uuid'
 import {prismaClient} from "../database/prismaClient";
+
+interface IUser {
+    name: string;
+    cpf: string; 
+    email: string; 
+    phone: string; 
+    sex: string; 
+    dataBirth: string
+}
 
 export class UpdatedUserController {
     async handle(request: Request, response: Response){
@@ -9,7 +17,7 @@ export class UpdatedUserController {
             const {id} = request.params;
             const { name, email, phone, sex, dataBirth } = request.body;
     
-            const user = await prismaClient.user.update({
+            const user: IUser = await prismaClient.user.update({
                 where: {
                     id: id
                 },
